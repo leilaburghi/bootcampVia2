@@ -26,6 +26,7 @@ describe('US001 - Funcionalidade : Login', () => {
         cy.get('[data-test="alert"]').should('contain','Credenciais inválidas')
         cy.get('.container > :nth-child(4)', {timeout:11000}).click()
              
+        
     });
 });
 
