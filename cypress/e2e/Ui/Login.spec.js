@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+import usuarios from "../../fixtures/usuarios.json"
+
 
 describe('US001 - Funcionalidade : Login', () => {
 
@@ -10,9 +12,7 @@ describe('US001 - Funcionalidade : Login', () => {
    
         cy.login ('leilabyb@bootcamp.com','123654')
 
-        cy.get('[data-test="dashboard-welcome"]').should('contain','Bem-vindo Leila Burghi')
-
-        cy.get('[data-test="dashboard-createProfile"]', {timeout:6000}).click()
+        cy.get('[data-test="login-submit"]').click()
         
     });
 
@@ -26,7 +26,20 @@ describe('US001 - Funcionalidade : Login', () => {
         cy.get('[data-test="alert"]').should('contain','Credenciais inválidas')
         cy.get('.container > :nth-child(4)', {timeout:11000}).click()
              
-        
+
+    });
+
+    it('Fazer Login com sucesso - Usando importação JSON', () => {
+        cy.login(usuarios[0].email,usuarios[0].senha)
+        cy.title().should('eq','ConexaoQA')
+    });
+
+    it('Fazer Login com sucesso - Usando fixture', () => {
+        cy.fixture("usuarios").then((user) => {
+            cy.login(user[1].email, user[1].senha)
+
+        })
+        cy.title().should('eq','ConexaoQA')
     });
 });
 

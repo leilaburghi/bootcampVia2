@@ -1,0 +1,16 @@
+[ 
+    { 
+    "email": "leilabyb@bootcamp.com",
+    "senha": "123654"
+    },
+    { 
+    "email": "leila.burghi2@viateste.com",
+    "senha": "senha123"
+    },
+    { 
+    "email": "leila.burghi3@viateste.com",
+    "senha": "senha123",
+    "perfil": "admin"
+    }
+
+]

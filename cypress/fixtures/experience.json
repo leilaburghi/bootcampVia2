@@ -1,0 +1,46 @@
+  {
+    "_id": "QA02",
+    "company": "MoveMais Meios de Pagamento",
+    "location": "Av. Alcantara, 111 - Jd Melhado - Araraquara-SP",
+    "status": "string",
+    "website": "www.movemais.com",
+    "skills": [
+      "string"
+    ],
+    "bio": "string",
+    "githubusername": "string",
+    "experience": [
+      {
+        "_id": "EX01",
+        "title": "Gestora na área de QA",
+        "company": "MoveMais Meios de Pagamento",
+        "location": "Av. Alcantara, 111 - Jd Melhado - Araraquara-SP",
+        "from": "2015-05-01",
+        "to": "2021-07-12",
+        "current": false,
+        "description": "Responsável pela área de qualidade de software da empresa"
+      }
+    ],
+    "education": [
+      {
+        "_id": "QA03",
+        "school": "Fatec Taquaritinga",
+        "degree": "Superior Completo",
+        "fieldofstudy": "Tecnologia da Informação",
+        "from": "2000-06-05",
+        "to": "2001-12-12",
+        "current": false,
+        "description": "string"
+      }
+    ],
+    "social": {
+      "youtube": "tps://www.youtube.com/channel/UCo7Lb5SJ53Dfdosfjosdjf",
+      "twitter": "https://twitter.com/lbyb/",
+      "facebook": "https://www.facebook.com/lbyb/",
+      "linkedin": "https://www.linkedin.com/lbyb/",
+      "instagram": "https://www.instagram.com/lbyb/",
+      "medium": "https://medium.com/lbyb/"
+    },
+    "date": "2022-09-12"
+  }
+

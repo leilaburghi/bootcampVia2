@@ -26,9 +26,13 @@
 
 /// <reference types="Cypress" />
 
+import auth from '../fixtures/auth.json'
+import profile from '../fixtures/profile.json'
+import experience from '../fixtures/experience.json'
+
 Cypress.Commands.add('navigate', (route) => {
     cy.intercept(route).as('loadpage')
-    cy.visit(route, { timeout: 60000 })
+    cy.visit(route, { timeout: 110000 })
     cy.wait('@loadpage')
 })
 
@@ -54,4 +58,65 @@ Cypress.Commands.add("cadastraruser", (company,internet,psw) => {
     cy.get('[data-test="register-submit"]').click()
 
     //cy.get('[data-test="dashboard-welcome"]', {timeout:11000}).click()
+})
+
+Cypress.Commands.add("tokenJwt", () => {
+    cy.request({
+
+        method: 'POST',
+        url: '/api/auth',
+        body: auth
+
+    }).then((response) => {
+        return response.body.jwt
+        
+    })
+})
+
+Cypress.Commands.add("criarPostagem", (token,value) => {
+    cy.request({
+
+        method:'POST',
+        url: '/api/posts',
+        headers:{
+            Cookie:token
+        },
+
+        body: {
+            text: "bootcamp06-09-22"
+        } 
+         
+    })
+
+})
+
+Cypress.Commands.add("criarProfile", (token,value) => {
+    cy.request({
+
+        method:'POST',
+        url: '/api/profile',
+        headers:{
+            Cookie:token
+        },
+
+        body: {
+            text: "Criação de Perfil"
+        } 
+         
+    })
+
+})
+
+
+Cypress.Commands.add("adicionarExperiencia", () => {
+    cy.request({
+
+        method: 'POST',
+        url: '/api/auth',
+        body: experience
+
+    }).then((response) => {
+        return response.body.jwt
+        
+    })
 })
