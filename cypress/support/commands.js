@@ -26,8 +26,10 @@
 
 /// <reference types="Cypress" />
 
+const faker = require('faker-br')
+
 import auth from '../fixtures/auth.json'
-import profile from '../fixtures/profile.json'
+import profile from '../fixtures/profileP.json'
 import experience from '../fixtures/experience.json'
 
 Cypress.Commands.add('navigate', (route) => {
@@ -90,7 +92,7 @@ Cypress.Commands.add("criarPostagem", (token,value) => {
 
 })
 
-Cypress.Commands.add("criarProfile", (token,value) => {
+Cypress.Commands.add("criarProfile", (token) => {
     cy.request({
 
         method:'POST',
@@ -99,9 +101,7 @@ Cypress.Commands.add("criarProfile", (token,value) => {
             Cookie:token
         },
 
-        body: {
-            text: "Criação de Perfil"
-        } 
+        body: profile
          
     })
 
@@ -120,3 +120,17 @@ Cypress.Commands.add("adicionarExperiencia", () => {
         
     })
 })
+
+Cypress.Commands.add("criarUsuario",()=>{
+    cy.request({
+        method: 'POST',
+        url: '/api/users',
+        body:{
+            name: faker.name.firstName(),
+            email: faker.internet.email(),
+            password: faker.internet.password()
+          }
+    }).then((response)=>{
+        return response.body.jwt
+    })
+ })

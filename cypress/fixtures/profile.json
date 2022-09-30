@@ -1,15 +1,15 @@
 {
-    "company": "Via Hub Tecnologia",
-    "status": "Ativo",
-    "location": "Avenida: José Parisi, 1122",
-    "website": "https://www.viahub.com.br",
-    "skills": "string",
-    "bio": "linktr.ee/viahubtech",
-    "githubusername": "leila.burghi@via.com.br",
-    "youtube": "https://www.youtube.com/channel/UCo7Lb5SJ53D4LcCN4V1TO0A",
-    "twitter": "https://twitter.com/hub_via",
-    "facebook": "https://www.facebook.com/viahubtech",
-    "linkedin": "https://www.linkedin.com/company/viahubtecnologia/mycompany/",
-    "instagram": "https://www.instagram.com/viahub.tech/",
-    "medium": "https://medium.com/viahub"
-  }
+  "company": "Via Hub Tecnologia",
+  "status": "Ativo",
+  "location": "Avenida: José Parisi, 1122",
+  "website": "string",
+  "skills": "Automação de Testes",
+  "bio": "string",
+  "githubusername": "leila.burghi",
+  "youtube": "",
+  "twitter": "https://twitter.com/PehGuerra90",
+  "facebook": "https://www.facebook.com/pehguerra/",
+  "linkedin": "https://www.linkedin.com/in/pedrohsguerra/",
+  "instagram": "https://www.instagram.com/pehguerra/",
+  "medium": ""
+}

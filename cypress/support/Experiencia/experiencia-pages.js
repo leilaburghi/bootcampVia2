@@ -1,12 +1,13 @@
 class ExperienciaPage{
 
-    get #posicao() {return  cy.get('[data-test="experience-title]')}    
+    // get #posicao() {return  cy.get('[data-test="experience-title]',{ timeout: 11000 })}    
+    get #posicao() {return  cy.get('[data-test="experience-title"]',{ timeout: 12000 })} 
     get #empresa() {return  cy.get('[data-test="experience-company"]')}
-    get #local() {return  cy.get('[data-test="experience-location]')}
+    get #local() {return  cy.get('[data-test="experience-location"]')}
     get #dataInicio() {return  cy.get('#from')}
     get #dataFim() {return  cy.get('#to')}
     get #descricao() {return  cy.get('[rows="1"]')}
-    get #btnAdd() {return  cy.get('[data-test="experience-submit]')}
+    get #btnAdd() {return  cy.get('[data-test="experience-submit"]')}
     get #checkAtual() {return  cy.get('.jss5')}
 
     addExperiencia(posicao,empresa,local,dataInicio,dataFim,descricao){

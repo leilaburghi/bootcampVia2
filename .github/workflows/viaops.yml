@@ -3,33 +3,30 @@ on:
   pull_request:
     branches: [ master, release/develop ]
 
-  # schedule: deve utilizar quando for necessário agendamendo para execução
-      # run at *minute  *hours *month *months of the years *days of week
-    # - cron: "* * * * *"
-    
   workflow_dispatch:
     inputs:
       amb:
         description: 'Selecionar algum destes ambientes: dev / stg / hlg / prd'
         required: false
-        default: 'stg'
+        default: 'qa'
       browser:
         description: 'Selecionar algum destes browsers: chrome / electron'
         required: true
         default: 'chrome'
-      tag:
-        description: 'Selecionar alguma tag, por exemplo: @regressivo / @smoke / @demo'
-        required: false
-        default: '@demo'
     
 env:
-  DEFAULT_KEY: "inserir-key-cypress-dashboard"
-  DEFAULT_AMB: "stg"
+  DEFAULT_KEY: "inserir-key-cypress-dashboard" 
+  DEFAULT_AMB: "qa"
   DEFAULT_BROWSER: "chrome"
-  DEFAULT_TAG: "@demo"
   DEFAULT_GROUP: "CI"
 
 jobs:
+
+  e2e-tests:
+    name: Execução dos testes e2e
+    runs-on: self-hosted
+    container: nome-do-container
+
   cypress-run-tests:
     name: Cypress run
     runs-on: self-hosted
@@ -66,3 +63,9 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+
+strategy:
+      fail-fast: false
+      matrix:
+        # run copies of the current job in parallel
+        containers: [1, 2, 3, 4]          

@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 import profile from '../../fixtures/profile.json'
 
+
 describe('Teste de Criação de Perfis', () => {
 
     let token
@@ -48,34 +49,12 @@ describe('Teste de consulta', () => {
         }).then((response) => {
             expect(response.status).to.eq(200)
         })
-    })
-
-
-    /* it.only('[GET] - Seleciona o perfil do usuário logado com base no ID informado no parâmetro de path', () => {
-
-        cy.criarprofile(token, "profileID").then((response) => {
-            let user 
-
-            cy.request({
-                method: 'GET',
-                url: `/api/profile/user/}`,
-
-                headers: {
-                    Cookie: token
-
-                },
-
-
-            }).then((response) => {
-                expect(response.status).to.eq(200)
-
-            })
-
-        })
-    }) */
+    })   
 });    
 
-/* describe('Teste de exclusão', () => {
+
+describe('Adição de Experiência Profisional', () => {
+
     let token
 
     beforeEach(() => {
@@ -84,60 +63,51 @@ describe('Teste de consulta', () => {
         })
     })
 
-    it('[DELETE] Excluir um perfil', () => {
-
-        cy.criarProfile(token, "profileID").then((response) => {
-            let id = response.body._id
-
-            cy.request({
-                method: 'DELETE',
-                url: `/api/auth/${id}`,
-
-                headers: {
-                    Cookie: token
-
-                },
-            }).then((response) => {
-                expect(response.status).to.eq(200)
-                expect(response.body.msg).to.eq("Perfil removido")
-
-            })
-        })
-    })
-}); */
-
-
-describe('Teste de alteração', () => {
-    let token
-
-    beforeEach(() => {
-        cy.tokenJwt().then((auth) => {
-            token = auth
-        })
-    })
-
-    it.only('[PUT] Curtir uma profile', () => {
-
-        cy.criarProfile(token, "profile").then((response) => {
-            // Adiciona experiência profissional no perfil com base no token informado no header. Pegar o token no serviço -> Auth - [POST] /api/auth
-
-             let id = response.body._id
-
+    it('[PUT] - Adicionar experiência profissional',()=>{
             cy.request({
                 method: 'PUT',
-                url: `/api/profile/${id}`,
-
-                headers: {
-                    Cookie: token
-
+                url: '/api/profile/experience',
+                headers:{
+                    Cookies: token
                 },
-            }).then((response) => {
-                expect(response.status).to.eq(200) //Perfil do usuário
-                
+                body:                
+                {
+                    "title": "Gestora na área de QA",
+                    "company": "MoveMais Meios de Pagamento",
+                    "location": "Av. Alcantara, 111 - Jd Melhado - Araraquara-SP",
+                    "from": "2015-05-01",
+                    "to": "2021-07-12",
+                    "current": false,
+                    "description": "Responsável pela área de qualidade de software da empresa"
+                  }
+            }).then((response)=>{
+                expect(response.status).to.eq(200)
             })
-
-        })
-
+    
     })
+
 });
 
+
+
+describe('Deleção de conta de usuário', () => {
+    beforeEach(()=>{
+        cy.criarUsuario().then((auth)=>{
+            token = auth
+        })
+    })
+
+    let token
+    it('[DELETAR] - Deletar conta de usuário',()=>{
+            cy.request({
+                method: 'DELETE',
+                url: '/api/profile',
+                headers:{
+                    Cookies: token
+                }
+            }).then((response)=>{
+                expect(response.status).to.eq(200)
+            })
+    
+    })
+});
